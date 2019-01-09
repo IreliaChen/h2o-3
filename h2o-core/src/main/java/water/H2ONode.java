@@ -56,7 +56,7 @@ public final class H2ONode extends Iced<H2ONode> implements Comparable {
     if (gracePeriod == 0) { // stop instantly
       _sendThread.stopSending();
     } else {
-      new StopSendThreadTask(_sendThread, gracePeriod);
+      H2O.submitTask(new StopSendThreadTask(_sendThread, gracePeriod));
     }
     _removed_from_cloud = true;
   }
